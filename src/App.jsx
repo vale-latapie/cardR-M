@@ -1,28 +1,18 @@
-
-import { useEffect, useState } from "react"
+import { BrowserRouter,Routes, Route } from "react-router-dom"
 import Navbar from "./assets/componentes/general/Navbar/Navbar"
-import axios from 'axios'
+import Principal from "./pages/principal"
+
+
 
 function App() {
-  const[characters, setCharacters] =useState([])
-  const handleRequest = async () => {
-    try{
-      const data = await axios.get("https://rickandmortyapi.com/api/character")
-      console.log(data)
-    }catch (error) {
-      console.log(error)
-    }
-  }
-  useEffect(() => {
-    handleRequest()
-  }, [])
-  
- console.log(characters)
-
-
-  return (
-    <Navbar/>
-  )
+ return (
+  <BrowserRouter>
+   <Navbar/>
+   <Routes>
+    <Route path='/' element={ <Principal/> } />
+   </Routes>
+  </BrowserRouter>
+ )
 }
 
 export default App
